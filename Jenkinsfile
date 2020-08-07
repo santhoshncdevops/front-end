@@ -1,32 +1,28 @@
-pipeline{
+pipeline {
+  agent {
+    docker {
+      image 'schoolofdevops/node:4-alpine'
+    }
 
-  agent any
-
-/*  tools{
-    maven 'Maven363'
   }
-  */
-
-  stages{
-
-    stage('build'){
-      steps{
+  stages {
+    stage('build') {
+      steps {
         sh 'npm install'
       }
     }
 
-    stage('test'){
-      steps{
+    stage('test') {
+      steps {
         sh 'npm test'
       }
     }
 
-    stage('package'){
-      steps{
+    stage('package') {
+      steps {
         sh 'npm run package'
       }
     }
 
   }
-
 }
